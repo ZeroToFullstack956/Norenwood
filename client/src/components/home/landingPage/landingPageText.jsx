@@ -15,6 +15,7 @@ export const LandingPageText = () => {
       width="716px"
       height="528px"
       maxWidth="100%"
+      textAlign="center"
     >
     
       <span>T</span>
@@ -41,7 +42,7 @@ export const LandingPageText = () => {
         fontSize="36px"
         color="#333333"
       >
-        . Whether your a business, student or member of the communuty accelerate your track with Zero.To.Fullstack. 
+        . Whether your a business, student or member of the communuty accelerate your track with Zero.ToFullstack. 
         Our expertise in AWS/Azure cloud, web-development, programming and troubleshooting 
         craft the digital backbone of your success. Dive into a journey where tailored solutions 
         meet community collaboration, inciting innovation where we shape the future of tech, together.
