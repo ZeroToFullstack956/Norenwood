@@ -1,0 +1,57 @@
+Start --> User visits Code-Crafters homepage
+    |
+    Yes --> Mia sees visually appealing banner with concise mission statement or value proposition
+    |   |
+    |   Mia clicks on banner to learn more about Code-Crafters
+    |   |
+    |   Mia is directed to 'For Businesses' page layout
+    |   |
+    |   Yes --> Mia sees layout for segmented services with various service icons or cards
+    |       |
+    |       Mia hovers over each service to see a brief description
+    |       |
+    |       Mia clicks on a service to learn more in-depth information
+    |       |
+    |       Mia sees a call-to-action (CTA) button
+    |       |
+    |       Mia clicks on CTA button to get started or learn more
+    |   |
+    |   Mia is directed to 'For Students' page layout
+    |   |
+    |   Yes --> Mia sees clean interface showcasing educational resources
+    |       |
+    |       Mia sees segmented cards for tutorials, mentoring programs, and clubs
+    |       |
+    |       Mia filters or sorts resources based on categories
+    |       |
+    |       Mia sees CTA buttons like "Join Now" or "Start Tutorial"
+    |       |
+    |       Mia clicks on CTA button to join or start tutorial
+    |   |
+    |   Mia is directed to 'Community Events' page layout
+    |   |
+    |   Yes --> Mia sees event listing layout with events and engagement opportunities
+    |       |
+    |       Mia views upcoming events in calendar view or list format
+    |       |
+    |       Mia sees details for each event including date, time, venue, and description
+    |       |
+    |       Mia clicks on "RSVP" or "Learn More" for an event
+    |   |
+    |   Mia sees bookmark icon next to resources allowing her to save them for later
+    |   |
+    |   Mia sees newsletter sign-up prompt
+    |   |
+    |   Mia clicks on newsletter sign-up prompt and enters her email address
+    |   |
+    |   Mia is directed to User Profile & Settings page
+    |   |
+    |   Yes --> Mia sees user-centric profile and settings page
+    |       |
+    |       Mia views her bookmarked resources
+    |       |
+    |       Mia manages her newsletter preferences
+    |       |
+    |       Mia updates her profile details and password
+    |   |
+    End
