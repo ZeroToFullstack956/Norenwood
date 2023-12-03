@@ -1,5 +1,4 @@
 import { Box, HStack, Text, Link } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export const LandingNav = () => {
@@ -7,7 +6,7 @@ export const LandingNav = () => {
 
   // determine the link
   const setLink = item => {
-    return item === "For Business" ? "For Business" : item === "For Students" ? "For Students" : item === "Community" ? "Community" : item === "Login/Sign-up" ? "Login/Sign-up" : null
+    return item === "For Business" ? "business" : item === "For Students" ? "students" : item === "Community" ? "community" : item === "Login/Sign-up" ? "login" : null
   }
 
   const handleClick = e =>{
@@ -15,30 +14,11 @@ export const LandingNav = () => {
 
     useEffect(() => {
       const authUser = () => {
-
       }
       return () => {
         // Cleanup code on unmount
       };
     }, []); 
-
-    switch (element) {
-      case "For Business":
-        useNavigate('/business')
-        break;
-      case "For Students":
-        useNavigate('/students')
-        break;
-      case "Community":
-        useNavigate('/community')
-        break;
-      case "Login/Sign-up":
-        useNavigate('/login')
-        break;
-      default:
-        break;
-    }
-
   }
   return (
     <HStack
