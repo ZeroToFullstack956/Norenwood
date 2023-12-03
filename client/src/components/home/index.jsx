@@ -1,9 +1,10 @@
 import { LandingPageLogo } from './landingPage/landingpageLogo';
 import { LandingNav } from './landingPage/landingNav';
 import { LandingPageText } from './landingPage/landingPageText';
-import { PhoneGraphic } from './images/3Dphone';
+import { DesktopPc } from './images/desktop.jsx';
+import { Iphone } from './images/3dPhone.jsx'; 
 import { Flex, VStack, Box, Spacer } from '@chakra-ui/react';
-import { FingerPrint } from './images/fingerPrint.jsx';
+
 
 export const LandingIndex = () => (
   <>
@@ -27,6 +28,7 @@ export const LandingIndex = () => (
         flexGrow={1} // Allows this flex container to take up remaining space
         justify="center" // Distribute space between elements
         paddingX="4" // Horizontal padding
+        direction={{ base: "column", md: "row" }}
       >
         {/* center container */}
         <VStack align="center">
@@ -44,8 +46,8 @@ export const LandingIndex = () => (
             {/* Empty box to create space */}
           </Box>
 
-          <PhoneGraphic />
-          <FingerPrint/>
+          <DesktopPc />
+          <Iphone/>
           {/* Additional space, if needed */}
           <Box height="20%"> {/* Adjust height as needed */}
             {/* Empty box to create space */}
