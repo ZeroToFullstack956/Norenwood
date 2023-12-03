@@ -10,7 +10,7 @@ export const LandingPageText = () => {
 const typewriterStyle = css`
   display: inline-block; // Apply the animation to the inline element
   overflow: hidden; // Hide the text initially
-  white-space: wrap; // Prevent text from wrapping
+  white-space: wrap; // text wrap
   border-right: .05em solid #2F80ED; // The typewriter cursor
   animation: ${typewriter} 10s steps(160, end) 1s forwards; // Adjust timing, steps, and delay as needed
 `;
