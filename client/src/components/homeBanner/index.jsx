@@ -5,7 +5,7 @@ import { Flex, VStack, Box, Spacer } from '@chakra-ui/react';
 export const HeroContent = () => (
   <>
     <Flex
-      direction="row" // Stack elements vertically
+      direction="row" 
       width="100vw"
       height="100vh"
       background="linear-gradient(180deg, #56ccf2 0%, #56ccf200 80.73%)"
