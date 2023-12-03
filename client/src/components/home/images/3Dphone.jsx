@@ -9,7 +9,6 @@ export const PhoneGraphic = () => {
       src={Phone}
       alt="Codecrafters"
     />
+
 </Box>
-
-
 )};

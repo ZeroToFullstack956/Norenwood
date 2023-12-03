@@ -3,6 +3,7 @@ import { LandingNav } from './landingPage/landingNav';
 import { LandingPageText } from './landingPage/landingPageText';
 import { PhoneGraphic } from './images/3Dphone';
 import { Flex, VStack, Box, Spacer } from '@chakra-ui/react';
+import { FingerPrint } from './images/fingerPrint.jsx';
 
 export const LandingIndex = () => (
   <>
@@ -13,7 +14,7 @@ export const LandingIndex = () => (
       background="linear-gradient(180deg, #56ccf2 0%, #56ccf200 80.73%)"
     >
       {/* Top horizontal bar for navigation */}
-      <Flex justify="space-between" width="100%" paddingX="16" marginTop={6}>
+      <Flex justify="space-between" width="100%" paddingX="9em" marginTop={6}>
         {/* Left placeholder for symmetry or additional content */}
         <Box></Box> 
 
@@ -24,11 +25,11 @@ export const LandingIndex = () => (
       {/* Main Content Area */}
       <Flex
         flexGrow={1} // Allows this flex container to take up remaining space
-        justify="space-between" // Distribute space between elements
+        justify="center" // Distribute space between elements
         paddingX="4" // Horizontal padding
       >
-        {/* Left side container */}
-        <VStack align="start">
+        {/* center container */}
+        <VStack align="center">
           <LandingPageLogo />
           <Box height={{ base: "20%", md: "40%" }}> {/* Adjust height as needed */}
             {/* Empty box to create space */}
@@ -44,7 +45,7 @@ export const LandingIndex = () => (
           </Box>
 
           <PhoneGraphic />
-
+          <FingerPrint/>
           {/* Additional space, if needed */}
           <Box height="20%"> {/* Adjust height as needed */}
             {/* Empty box to create space */}
