@@ -14,7 +14,7 @@ export const LandingIndex = () => (
       background="linear-gradient(180deg, #56ccf2 0%, #56ccf200 80.73%)"
     >
       {/* Top horizontal bar for navigation */}
-      <Flex justify="space-between" width="100%" paddingX="9em" marginTop={6}>
+      <Flex justify="space-between" width="100%" paddingX="16" marginTop={6}>
         {/* Left placeholder for symmetry or additional content */}
         <Box></Box> 
 

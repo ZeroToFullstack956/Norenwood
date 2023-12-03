@@ -41,7 +41,7 @@ export const LandingPageText = () => {
         fontSize="36px"
         color="#333333"
       >
-        . Whether your a business, student or member of the communuty accelerate your track with Code-Crafters. 
+        . Whether your a business, student or member of the communuty accelerate your track with Zero.To.Fullstack. 
         Our expertise in AWS/Azure cloud, web-development, programming and troubleshooting 
         craft the digital backbone of your success. Dive into a journey where tailored solutions 
         meet community collaboration, inciting innovation where we shape the future of tech, together.
