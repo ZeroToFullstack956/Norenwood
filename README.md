@@ -1,8 +1,8 @@
-# Code-Crafters 💼
+# Zero-To-Fullstack 💼
 
 ## Purpose Statement 🎯
 
-At Code Crafters, our mission is to serve, support, and empower businesses, students, and the community. We aim to achieve this by providing resources in computer programming, web development, and the cloud. By fostering a collaborative environment, we facilitate knowledge sharing, innovation, and drive collective growth in the digital realm.
+Zero.to.fullstack: our mission is to serve, support, and empower businesses, students, and the community. We aim to achieve this by providing resources in computer programming, web development, and the cloud. By fostering a collaborative environment, we facilitate knowledge sharing, innovation, and drive collective growth in the digital realm.
 
 ---
 
