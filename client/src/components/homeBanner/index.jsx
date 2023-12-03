@@ -1,15 +1,11 @@
-import { LandingPageLogo } from './landingPage/landingpageLogo';
-import { LandingNav } from './landingPage/landingNav';
-import { LandingPageText } from './landingPage/landingPageText';
-import { DesktopPc } from './images/desktop.jsx';
-import { Iphone } from './images/3dPhone.jsx'; 
+import { Hero } from './hero/hero.jsx';
 import { Flex, VStack, Box, Spacer } from '@chakra-ui/react';
 
 
-export const LandingIndex = () => (
+export const HeroContent = () => (
   <>
     <Flex
-      direction="column" // Stack elements vertically
+      direction="row" // Stack elements vertically
       width="100vw"
       height="100vh"
       background="linear-gradient(180deg, #56ccf2 0%, #56ccf200 80.73%)"
@@ -20,23 +16,23 @@ export const LandingIndex = () => (
         <Box></Box> 
 
         {/* LandingNav positioned on the right */}
-        <LandingNav />
+       <Hero/>
       </Flex>
 
       {/* Main Content Area */}
       <Flex
         flexGrow={1} // Allows this flex container to take up remaining space
         justify="center" // Distribute space between elements
-        paddingX="4" // Horizontal padding
+        paddingX="5" // Horizontal padding
         direction={{ base: "column", md: "row" }}
       >
         {/* center container */}
         <VStack align="center">
-          <LandingPageLogo />
+          
           <Box height={{ base: "20%", md: "40%" }}> {/* Adjust height as needed */}
             {/* Empty box to create space */}
           </Box>
-          <LandingPageText />
+         
         </VStack>
 
         {/* Right side container */}
@@ -46,8 +42,6 @@ export const LandingIndex = () => (
             {/* Empty box to create space */}
           </Box>
 
-          <DesktopPc />
-          <Iphone/>
           {/* Additional space, if needed */}
           <Box height="20%"> {/* Adjust height as needed */}
             {/* Empty box to create space */}

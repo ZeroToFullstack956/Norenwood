@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { LandingIndex } from './components/home';
+import { LandingIndex } from './components/landing';
 import { ChakraProvider } from '@chakra-ui/react';
+import {HeroContent} from '../src/components/homeBanner/index.jsx'
 //import './App.css'
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
     <ChakraProvider>
 
     <>
-
-      <LandingIndex/>
+      <HeroContent/>
+      {/* <LandingIndex/> */}
 
     </>
 
