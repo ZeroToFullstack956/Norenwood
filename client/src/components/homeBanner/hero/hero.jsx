@@ -16,12 +16,11 @@ export const Hero = () => {
       borderRadius={25}
       overflow="hidden" 
       maxH="xl"
-      p={0}
       >
       <Image
         src={backdrop}
         alt='blue background'
-        w='100%'
+        w='95%'
         h='100%'
         position="absolute"
         zIndex="-1"

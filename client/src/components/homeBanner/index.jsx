@@ -10,14 +10,15 @@ export const HeroContent = () => (
       height="100vh"
       background="linear-gradient(0deg, #56ccf2 0%, #56ccf200 80.73%)"
     >
+        {/* Flexbox for navbar */}
      <LandingNav/>
       <Flex 
-      justify="space-between" 
       width="100%" 
-      paddingX="16" 
+      paddingX="32" 
       marginTop={6}>
        <Hero/>
       </Flex>
+      {/* flexbox for card navigation */}
     </Flex>
   </>
 );
