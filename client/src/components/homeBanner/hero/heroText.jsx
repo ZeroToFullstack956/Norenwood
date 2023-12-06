@@ -9,7 +9,7 @@ export const HeroText = () => {
           <Box 
         maxWidth={{ base: '90%', sm: '80%', md: '60%', lg: '50%'}}
         mb={{ base: 4, md: 0 }}
-        p={{ base: 3, sm: 6, md: 12, lg: 24, xl: 28 }}
+        p={{ base: 3, sm: 6, md: 12, lg: 18, xl: 36 }}
         >
         <Text
           fontFamily="EB Garamond"
