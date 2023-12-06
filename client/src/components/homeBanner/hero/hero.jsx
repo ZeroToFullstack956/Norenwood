@@ -19,7 +19,7 @@ export const Hero = () => {
       >
       <Image
         src={backdrop}
-        alt='blue background'
+        alt='blue background with various shapes and designe'
         w='95%'
         h='100%'
         position="absolute"

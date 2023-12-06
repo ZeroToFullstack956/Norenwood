@@ -13,28 +13,33 @@ export const HeroImage = () => {
       pos="relative"
       display="flex"
       alignItems={{ base: 'flex-end', md: 'center' }}
-      width={{ base: '100%', sm: '100%', md: '80%' }}
+      width={{ base: '100%', md: '80%' }}
       minHeight={{ base: '150px', sm: '300px', md: '400px'}}
       order={{ base: -1, md: 0 }}
+      left={{ base: 5, sm: 6, md: 12, lg: 14, xl:0 }}
+      my={{ base: 5, sm: 6, md: 12, lg: 10, xl:10 }}
+      bottom={{ base: 2, sm: 10 }}
     >
       <Image
         src={girl}
         alt='a girl with a laptop sitting down'
-        boxSize={{ base: '80%', sm: '80%', md: '40%'}}
+        boxSize={{ base: '40%', md: '40%'}}
         h="auto"
         objectFit="contain"
-        ml={{ base: 7, sm: 6, md: 12, lg: 24, xl: 32 }}
+        ml={{ base: 20, sm: 6, md: 6, lg: 12, xl: 20 }}
       />
       <Box
         pos="absolute"
-        top={{ base: '50%', sm: '80%', md: '30%', lg: "5%"}}
+        top={{ base: '50%', sm: '80%', md: '30%', lg: "8%"}}
+        pr={{ base: 7, sm: 6, md: 12, lg: 24, xl: 32 }}
         left={["25%"]}
         zIndex={-1}
       >
+        {/* {{ base: '50%', sm: '80%', md: '30%', lg: "8%"}} */}
          <Image
             src={elipse3}
             alt='large orange ellipse'
-            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "100%"}}
+            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "70%"}}
             h="auto"
             objectFit="contain"
           />
@@ -42,7 +47,7 @@ export const HeroImage = () => {
       <Box
         pos="absolute"
         top={["45%"]}
-        left={["12%"]}
+        left={["0%"]}
         zIndex={-1}
       >
          <Image
@@ -55,7 +60,7 @@ export const HeroImage = () => {
       </Box>
       <Box
         pos="absolute"
-        top={{sm:"25%", md:"35%"}}
+        top={{sm:"25%"}}
         left={["18%"]}
         zIndex={-1}
       >
@@ -69,8 +74,8 @@ export const HeroImage = () => {
       </Box>
       <Box
         pos="absolute"
-        top={["60%"]}
-        left={["58%"]}
+        top={["55%"]}
+        left={["52%"]}
         zIndex={-1}
       >
          <Image

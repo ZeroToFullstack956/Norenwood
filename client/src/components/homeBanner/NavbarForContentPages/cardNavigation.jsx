@@ -1,17 +1,50 @@
 import { Box, Flex, Link, Text, Image } from "@chakra-ui/react";
-import { useState } from 'react';
-import pointer from '../../../assets/pointer.png';
+import { useEffect, useState } from 'react';
 import { motion } from "framer-motion"
+import pointer from '../../../assets/pointer.png';
+
 
 export default function Navbar() {
-  const [activeLink, setActiveLink] = useState('home')
+  const [activeLink, setActiveLink] = useState('home');
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  // create dynamic values based on the screen width to adjust features
   const imgTransform = {
-    home: '17px',
-    about: '160px',
-    contact: '320px', 
-  }
+    large: { home: '17px', about: '160px', contact: '320px' },
+    medium: { home: '2px', about: '138px', contact: '285px' },
+    small: { home: '2px', about: '115px', contact: '250px' },
+    custom: { home: '2px', about: '145px', contact: '285px' },   
+  };
 
+  const pointerTransform = {
+    large:'20px',
+    medium: '45px',
+    small: '45px',  
+  }
+  // Responsive styles for Links and Separators
+  const linkStyle = { 
+    fontSize: screenSize > 410 ? 'md' : 'sm', // Smaller font size for very small screens
+    mr: screenSize > 410 ? 2 : 2, // Smaller margin for very small screens
+  };
+
+  const separatorStyle = { 
+    mx: screenSize > 410 ? 2 : 2, // Smaller margin for very small screens
+  };
+  const currentTransform = screenSize > 836 ? imgTransform.large : 
+                           screenSize > 767 ? imgTransform.medium : 
+                           screenSize >= 639 ? imgTransform.large : 
+                           screenSize < 639 && screenSize > 555 ? imgTransform.custom : 
+                           imgTransform.small; 
+
+  const pointerTopPosition = screenSize > 836 ? pointerTransform.large : 
+                             screenSize > 767 ? pointerTransform.medium : 
+                             screenSize > 639 ? pointerTransform.large : 
+                             pointerTransform.small;
   return (
     <Flex 
         position="absolute"
@@ -20,16 +53,16 @@ export default function Navbar() {
         right={0}
         bg='whitesmoke'
         margin="auto"
-        px={6} // add more padding on left and right 
-        py={6}  // add more padding on top and bottom
+        px={6} 
+        py={6} 
         color='black' 
         alignItems='center' 
         justify='center' 
-        width={{ base: '100%', sm: '80%', md: '60%' }}
-        boxShadow="0 0 0 8px rgba(187, 189, 191, 0.5)" // This is a white color set to be 50% transparent
+        width={{ base: '90%', sm: '80%', md: '60%' }}
+        boxShadow="0 0 0 8px rgba(187, 189, 191, 0.5)"
     >
       <Text 
-        fontSize="xl" 
+        fontSize="lg" 
         fontWeight="bold"
       /> 
         <Box 
@@ -41,26 +74,25 @@ export default function Navbar() {
             style={{ pointerEvents: 'none' }} 
             pos="absolute" 
             left="0" 
-            top="20px" 
             h="100%"
           >
             <motion.div 
-              animate={{ x: imgTransform[activeLink] }} 
-              transition={{ duration: 0.5 }}
-            >
-              <Image src={pointer} />
-            </motion.div>
+            animate={{ x: currentTransform[activeLink], y: pointerTopPosition }} 
+            transition={{ duration: 0.5 }}
+          >
+            <Image src={pointer} />
+          </motion.div>
           </Box>
           <Flex justifyContent="space-between">
-            <Link onClick={() => setActiveLink('home')}>
+          <Link onClick={() => setActiveLink('home')} sx={linkStyle}>
               For Business
             </Link> 
-            <Text mx={6}> | </Text> 
-            <Link onClick={() => setActiveLink('about')}>
+            <Text sx={separatorStyle}> | </Text> 
+            <Link onClick={() => setActiveLink('about')} sx={linkStyle}>
               For Students
             </Link>
-            <Text mx={6}> | </Text>
-            <Link onClick={() => setActiveLink('contact')}>
+            <Text sx={separatorStyle}> | </Text> 
+            <Link onClick={() => setActiveLink('contact')} sx={linkStyle}>
               Community Events
             </Link>
           </Flex>

@@ -10,13 +10,11 @@ export const HeroContent = () => (
       direction="column" 
       width="100vw"
       height="100vh"
-      background="linear-gradient(0deg, #56ccf2 0%, #56ccf200 80.73%)"
+      background="linear-gradient(0deg, #56ccf2 0%, #56ccf200 50%)"
     >
-        {/* Flexbox for navbar */}
      <LandingNav/>
-      <Flex 
-      width="100%" 
-      paddingX="32" 
+    <Flex 
+      paddingX={{ base: 7, sm: 6, md: 6, lg: 12, xl: 20 }} 
       marginTop={6}>
        <Box position="relative">
 
@@ -25,7 +23,6 @@ export const HeroContent = () => (
 
        </Box>
       </Flex>
-      {/* flexbox for card navigation */}
     </Flex>
   </>
 );
