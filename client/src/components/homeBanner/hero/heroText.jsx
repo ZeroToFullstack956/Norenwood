@@ -40,8 +40,8 @@ export const HeroText = () => {
           >
           “ Our mission is to deliver innovative computer solutions that seamlessly integrate into your life. 
             Building community with tech professionals that 
-            have soft skills and an unwavering commitment to excellence and ethics, we strive to enhance your 
-            making technology accessible, efficient, and tailored to your needs. “
+            have soft skills and an unwavering commitment to excellence and ethics, we strive to
+            make technology accessible, efficient, and tailored to your needs. “
         </Text>
       </Box>
 

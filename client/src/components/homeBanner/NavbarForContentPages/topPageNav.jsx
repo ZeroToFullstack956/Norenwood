@@ -1,14 +1,15 @@
 import { Box, HStack, Text, Link, Image, Flex } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
+import logo from '../../../assets/ztfs.jpg'
 
 export const LandingNav = () => {
-  const navItems = ["For Business", "For Students", "Community", "Login/Sign-up"];
-  const logo = ''; // put your logo url here
+  const navItems = ["Home", "Contact", "Support"];
 
-  // determine the link
+
+  // determine the link //to-do fix this
   const setLink = item => {
-    // your logic here
-  }
+    return item === "For Business" ? "business" : item === "For Students" ? "students" : item === "Community" ? "community" : item === "Login/Sign-up" ? "login" : null
+    }
 
   const handleClick = () => {
     useEffect(() => {
@@ -23,12 +24,18 @@ export const LandingNav = () => {
       justify="space-between" 
       paddingY={2} 
       paddingX={6} 
-      width="100%"
+      width="75%" 
+      mx="auto" 
       background="transparent"
       mixBlendMode="darken"
     >
       <Box>
-        <Image src={logo} alt="Your company logo"/>
+      <Image 
+          src={logo} 
+          alt="Zero to fullstack logo" 
+          width={{ base: "40px", md: "100px"}} 
+          objectFit="cover" 
+        />
       </Box>
 
       <HStack spacing={4}>
@@ -51,4 +58,3 @@ export const LandingNav = () => {
     </Flex>
   );
 };
-
