@@ -1,52 +1,54 @@
-import { Box, HStack, Text, Link } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { Box, HStack, Text, Link, Image, Flex } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 
 export const LandingNav = () => {
   const navItems = ["For Business", "For Students", "Community", "Login/Sign-up"];
+  const logo = ''; // put your logo url here
 
   // determine the link
   const setLink = item => {
-    return item === "For Business" ? "business" : item === "For Students" ? "students" : item === "Community" ? "community" : item === "Login/Sign-up" ? "login" : null
+    // your logic here
   }
 
-  const handleClick = e =>{
-    const element = e.target.innerText;
-
+  const handleClick = () => {
     useEffect(() => {
-      const authUser = () => {
-      }
       return () => {
         // Cleanup code on unmount
       };
     }, []); 
-  }
+  };
+
   return (
-    <HStack
-      spacing={4} 
-      align="center"
-      justify="flex-end" 
+    <Flex
+      justify="space-between" 
       paddingY={2} 
       paddingX={6} 
       width="100%"
-      maxWidth={{ base: "20%", md: "40%" }} 
-      background="transparent" 
+      background="transparent"
       mixBlendMode="darken"
     >
-      {navItems.map((item, index) => (
-        <Link
-          key={index}
-          href={setLink(item)}
-          onClick={handleClick}
-          fontFamily="Noto"
-          lineHeight="1.5"
-          fontWeight="semibold"
-          fontSize="16px"
-          color="#000000"
-          _hover={{ color: "#F2994A", textDecoration: "underline" }}
-        >
-          {item}
-        </Link>
-      ))}
-    </HStack>
+      <Box>
+        <Image src={logo} alt="Your company logo"/>
+      </Box>
+
+      <HStack spacing={4}>
+        {navItems.map((item, index) => (
+          <Link
+            key={index}
+            href={setLink(item)}
+            onClick={handleClick}
+            fontFamily="Noto"
+            lineHeight="1.5"
+            fontWeight="semibold"
+            fontSize="16px"
+            color="#000000"
+            _hover={{ color: "#F2994A", textDecoration: "underline" }}
+          >
+            {item}
+          </Link>
+        ))}
+      </HStack>
+    </Flex>
   );
 };
+

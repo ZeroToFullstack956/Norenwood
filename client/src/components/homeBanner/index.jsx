@@ -1,6 +1,8 @@
 import { Hero } from './hero/hero.jsx';
 import { Flex, VStack, Box, Spacer } from '@chakra-ui/react';
 import { LandingNav } from '../homeBanner/NavbarForContentPages/topPageNav.jsx';
+import CardNavbar from './NavbarForContentPages/cardNavigation.jsx';
+
 
 export const HeroContent = () => (
   <>
@@ -16,7 +18,12 @@ export const HeroContent = () => (
       width="100%" 
       paddingX="32" 
       marginTop={6}>
-       <Hero/>
+       <Box position="relative">
+
+        <Hero/>
+        <CardNavbar/>
+
+       </Box>
       </Flex>
       {/* flexbox for card navigation */}
     </Flex>
