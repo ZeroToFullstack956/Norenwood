@@ -1,9 +1,41 @@
 import { Box, HStack, Text, Link, Image, Flex } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
-import logo from '../../../assets/ztfs.jpg'
+import React, { useEffect, useRef } from 'react';
+import { TopNavImage } from './navImg';
+import { gsap } from 'gsap';
 
-export const LandingNav = () => {
+export const TopNavContentPages = () => {
   const navItems = ["Home", "Contact", "Support"];
+  const wavePathRef = useRef(null);
+
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      const svgHeight = 40; // Height of the SVG container
+      const waveHeight = 20; // Center line of the wave
+      const waveBreadth = 105;
+
+      // Calculate amplitude based on mouse X position relative to window width
+      let mouseXPercentage = (e.clientY) / window.innerWidth;
+      let amplitude = (mouseXPercentage * 4) * svgHeight - waveHeight; // Amplitude varies between 0 and svgHeight
+
+      // Ensure the amplitude stays within the bounds of the SVG container
+      amplitude = Math.max(Math.min(amplitude, waveHeight), -waveHeight);
+
+      // Adjust the wave based on mouse X position
+      gsap.to(wavePathRef.current, {
+        duration: 0.2,
+        ease: "sine.inOut",
+        attr: {
+          d: `M0,${waveHeight} Q${waveBreadth / 2},${waveHeight + amplitude},${waveBreadth},${waveHeight} T${waveBreadth * 2},${waveHeight} T${waveBreadth * 3},${waveHeight} T${waveBreadth * 4},${waveHeight}`
+        }
+      });
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  }, []);
 
 
   // determine the link //to-do fix this
@@ -12,48 +44,63 @@ export const LandingNav = () => {
     }
 
   const handleClick = () => {
-    useEffect(() => {
-      return () => {
-        // Cleanup code on unmount
-      };
-    }, []); 
+
   };
 
   return (
     <Flex
-      justify="space-between" 
-      paddingY={2} 
-      paddingX={6} 
-      width="75%" 
-      mx="auto" 
-      background="transparent"
-      mixBlendMode="darken"
-    >
-      <Box>
-      <Image 
-          src={logo} 
-          alt="Zero to fullstack logo" 
-          width={{ base: "40px", md: "100px"}} 
-          objectFit="cover" 
-        />
-      </Box>
+        justify="space-between" 
+        paddingY={2} 
+        paddingX={6} 
+        width="85%" 
+        mx="auto" 
+        background="transparent"
+        mixBlendMode="darken"
+      >
 
-      <HStack spacing={4}>
-        {navItems.map((item, index) => (
-          <Link
-            key={index}
-            href={setLink(item)}
-            onClick={handleClick}
-            fontFamily="Noto"
-            lineHeight="1.5"
-            fontWeight="semibold"
-            fontSize="16px"
-            color="#000000"
-            _hover={{ color: "#F2994A", textDecoration: "underline" }}
+      <TopNavImage/>
+
+      <Box flex="1" position="relative" overflow="hidden" ml={2}>
+          <svg
+            viewBox="0 0 360 40"
+            position="absolute"
+            top="50%"
+            left="0"
+            w="100%"
+            style={{ transform: "translateY(-5%)" }}
           >
-            {item}
-          </Link>
-        ))}
+            <path
+              ref={wavePathRef}
+              fill="none"
+              stroke="#2F80ED"
+              strokeWidth="2"
+              d="M0,20 Q45,20,90,20 T180,20 T270,20 T360,20 V40 H0 Z"
+            />
+          </svg>
+      </Box>
+      <HStack spacing={4}>
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              href={setLink(item)}
+              onClick={handleClick}
+              fontFamily="Noto"
+              lineHeight="1.5"
+              fontWeight="semibold"
+              fontSize="16px"
+              color="#000000"
+              p={2} // Added padding
+              borderRadius="md" // Optional: border radius
+              _hover={{ 
+                bg: "gray.100", // Optional: background color change on hover
+                color: "#F2994A", 
+                textDecoration: "underline", 
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.25)" // Shadow on hover
+              }}
+            >
+              {item}
+            </Link>
+          ))}
       </HStack>
     </Flex>
   );

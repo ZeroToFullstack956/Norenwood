@@ -17,8 +17,9 @@ export const HeroImage = () => {
       minHeight={{ base: '150px', sm: '300px', md: '400px'}}
       order={{ base: -1, md: 0 }}
       left={{ base: 5, sm: 6, md: 12, lg: 14, xl:0 }}
-      my={{ base: 5, sm: 6, md: 12, lg: 10, xl:10 }}
+      my={{ base: 5, sm: 6, md: 12, lg: 10, xl:12 }}
       bottom={{ base: 2, sm: 10 }}
+      top={{ base: 0, sm: -16, md: 1, lg: 1, xl:1 }}
     >
       <Image
         src={girl}
