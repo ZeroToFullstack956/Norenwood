@@ -14,8 +14,8 @@ export const TopNavContentPages = () => {
       const waveBreadth = 105;
 
       // Calculate amplitude based on mouse X position relative to window width
-      let mouseXPercentage = (e.clientY) / window.innerWidth;
-      let amplitude = (mouseXPercentage * 4) * svgHeight - waveHeight; // Amplitude varies between 0 and svgHeight
+      let mouseXPercentage = (e.clientX) / window.innerWidth;
+      let amplitude = (mouseXPercentage * 3) * svgHeight - waveHeight; // Amplitude varies between 0 and svgHeight
 
       // Ensure the amplitude stays within the bounds of the SVG container
       amplitude = Math.max(Math.min(amplitude, waveHeight), -waveHeight);
@@ -29,10 +29,11 @@ export const TopNavContentPages = () => {
         }
       });
     };
-
+    // listen for mouse movement
     window.addEventListener('mousemove', onMouseMove);
 
     return () => {
+      // clean up the listener
       window.removeEventListener('mousemove', onMouseMove);
     };
   }, []);
@@ -89,10 +90,10 @@ export const TopNavContentPages = () => {
               fontWeight="semibold"
               fontSize="16px"
               color="#000000"
-              p={2} // Added padding
-              borderRadius="md" // Optional: border radius
+              p={2}
+              borderRadius="md"
               _hover={{ 
-                bg: "gray.100", // Optional: background color change on hover
+                bg: "gray.100",
                 color: "#F2994A", 
                 textDecoration: "underline", 
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.25)" // Shadow on hover

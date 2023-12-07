@@ -21,7 +21,7 @@ export default function Navbar() {
       { label: 'Community & Events', id: 'contact' },
     ];
 
-  // create dynamic values based on the screen width to adjust features
+  // dynamic values based on the screen width to adjust features
   const imgTransform = {
     large: { home: '17px', about: '140px', contact: '290px' },
     medium: { home: '17px', about: '130px', contact: '260px' },
@@ -43,7 +43,7 @@ export default function Navbar() {
   const separatorStyle = { 
     mx: screenSize > 410 ? 2 : 2, // Smaller margin for very small screens
   };
-  
+  // dont judge my turnery :)
   const currentTransform = screenSize > 836 ? imgTransform.large : 
                            screenSize > 767 ? imgTransform.large : 
                            screenSize >= 639 ? imgTransform.large : 
@@ -51,7 +51,7 @@ export default function Navbar() {
                            screenSize >= 480 ? imgTransform.xsmall : 
                            screenSize < 480 ? imgTransform.custom :
                            imgTransform.xsmall; 
-
+// dont judge my turnery :)
   const pointerTopPosition = screenSize > 836 ? pointerTransform.large : 
                              screenSize >= 768 && screenSize <= 795 ? pointerTransform.medium : 
                              screenSize > 608 ? pointerTransform.large : 
@@ -104,7 +104,7 @@ export default function Navbar() {
               >
                 {item.label}
               </Link>
-              {index < navItems.length - 1 && <Text sx={separatorStyle}> | </Text>}
+              {index < navItems.length - 1 && <Text sx={separatorStyle}> | </Text>} 
             </React.Fragment>
         ))}
       </Flex>

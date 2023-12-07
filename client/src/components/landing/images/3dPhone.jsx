@@ -4,7 +4,6 @@ import { useSpring, a } from '@react-spring/three';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DirectionalLight as ThreeDirectionalLight } from 'three';
-import { TextureLoader } from 'three';
 
 export const Iphone = () => {
   // Define animation properties using react-spring for a slower rotation

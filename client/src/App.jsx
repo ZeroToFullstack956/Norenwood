@@ -11,8 +11,8 @@ function App() {
     <ChakraProvider>
 
     <>
-      <HeroContent/>
       {/* <LandingIndex/> */}
+      <HeroContent/>
 
     </>
 
