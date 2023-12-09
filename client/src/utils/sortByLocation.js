@@ -3,7 +3,7 @@ export const sortByLocation = async () => {
       console.error("Geolocation is not supported by your browser");
       return;
     }
-  
+    // get the users location from the browser
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
   
