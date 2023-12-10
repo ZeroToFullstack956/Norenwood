@@ -6,7 +6,7 @@ import { sortByLocation } from "../../../utils/sortByLocation";
 // import { EventCard } from "../cardTemplates/wideCard";
 import { WideCardsContainer } from "../cardTemplates/carContainers/wideCardContainer";
 // import { RenderPagination } from "../../pagination/RenderPagination";
-import { sortByLocation } from "../../../utils/sortByLocation";
+
 
 export const FeatureFilter = ({ cardData }) => {
     const [items, setItems] = useState([]); 
@@ -44,9 +44,8 @@ export const FeatureFilter = ({ cardData }) => {
             </Flex>
                 {/* Separation line */}
             <Box borderBottom="1px" borderColor="gray.200" mb={4} />
-                {/* Rendering the card templates, passing in the sorted data */}
+                {/* Rendering the card templates through the card container, passing in the sorted data */}
                 <WideCardsContainer data = {items}/>
         </Box>
-       
     );
 };

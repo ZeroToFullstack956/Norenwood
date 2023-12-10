@@ -1,12 +1,11 @@
 import React from "react";
-
 import { Image, Flex } from '@chakra-ui/react'
 import backdrop from '../../../assets/backdrop.png'
 import { HeroText } from "./heroText";
 import { HeroImage } from "./heroImage";
 
 
-export const Hero = () => {
+export const Hero = ({ isMobileView }) => {
   return (
     <Flex
       direction={["column", "row"]}
@@ -28,7 +27,7 @@ export const Hero = () => {
 
     <HeroText/>
 
-    <HeroImage/>
+    <HeroImage isMobileView = {isMobileView}/>
 
     </Flex>
   )

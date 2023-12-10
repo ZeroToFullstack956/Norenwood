@@ -4,14 +4,14 @@ import mockData from '../../../mockData.json'
 
 export const PropogateTemplates = ({ secondaryNavSelection }) => {
 
-    const [cardDataObject, setCardDataObject] = useState(null);
+    const [cardDataObject, setCardDataObject] = useState();
     
     // check what tab the nav bar is on to render the content --to-do: this needs work
     useEffect(() => {
         switch (secondaryNavSelection) {
             case 'Community':
                 setCardDataObject(mockData);
-                console.log(cardDataObject)
+                // console.log(cardDataObject)
                 break;
             case 'Business':
                 // Code to execute
@@ -20,18 +20,19 @@ export const PropogateTemplates = ({ secondaryNavSelection }) => {
                 // Code to execute
                 break;
             default:
-                console.log(cardDataObject)
+                console.log("default")
+                console.log(secondaryNavSelection)
                 // Code to execute when secondaryNavSelection doesn't match any case
         }
     }, [secondaryNavSelection]);
 
     useEffect(() => {
-        console.log(mockData)
+        // console.log(mockData)
     }, []);
 
     return (
         <>
-        <FeatureFilter cardData = {mockData} />
+        <FeatureFilter cardData = {cardDataObject} />
         </>
     );
 };

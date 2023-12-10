@@ -1,12 +1,13 @@
 import React from "react";
 import { Box, Image} from '@chakra-ui/react'
 import girl from '../../../assets/cute-freelance-girl-using-laptop-sitting-floor-smiling.png'
+import ztfs from '../../../assets/ztfs.jpg'
 import elipse3 from '../../../assets/Ellipse3.png'
 import elipse4 from '../../../assets/Ellipse4.png'
 import elipse5 from '../../../assets/Ellipse5.png'
 import elipse6 from '../../../assets/Ellipse6.png'
 
-export const HeroImage = () => {
+export const HeroImage = ({ isMobileView }) => {
 
     return(
      <Box
@@ -22,7 +23,7 @@ export const HeroImage = () => {
       top={{ base: 0, sm: -16, md: 1, lg: 1, xl:1 }}
     >
       <Image
-        src={girl}
+        src={isMobileView ? ztfs : girl}
         alt='a girl with a laptop sitting down'
         boxSize={{ base: '40%', md: '40%'}}
         h="auto"
@@ -36,11 +37,10 @@ export const HeroImage = () => {
         left={["25%"]}
         zIndex={-1}
       >
-        {/* {{ base: '50%', sm: '80%', md: '30%', lg: "8%"}} */}
          <Image
             src={elipse3}
             alt='large orange ellipse'
-            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "70%"}}
+            boxSize={{ base: '50%', sm: '80%', md: '50%', lg: "70%"}}
             h="auto"
             objectFit="contain"
           />
@@ -54,7 +54,7 @@ export const HeroImage = () => {
          <Image
             src={elipse4}
             alt='large blue ellipse'
-            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "100%"}}
+            boxSize={{ base: '50%', sm: '80%', md: '50%', lg: "100%"}}
             h="auto"
             objectFit="contain"
           />
@@ -68,7 +68,7 @@ export const HeroImage = () => {
          <Image
             src={elipse5}
             alt='small orange ellipse'
-            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "100%"}}
+            boxSize={{ base: '50%', sm: '80%', md: '50%', lg: "100%"}}
             h="auto"
             objectFit="contain"
           />
@@ -82,7 +82,7 @@ export const HeroImage = () => {
          <Image
             src={elipse6}
             alt='small blue ellipse'
-            boxSize={{ base: '50%', sm: '80%', md: '40%', lg: "100%"}}
+            boxSize={{ base: '50%', sm: '80%', md: '50%', lg: "100%"}}
             h="auto"
             objectFit="contain"
           />
