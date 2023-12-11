@@ -17,7 +17,7 @@ export const HeroContent = () => {
   // set the active link from the child component
   const handleActiveLinkChange = (activeLinkId) => {
     setActiveLink(activeLinkId)
-    console.log(activeLink)
+    // console.log("Received active link ID:", activeLinkId);
   };
 
   return (

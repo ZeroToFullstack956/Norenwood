@@ -21,7 +21,7 @@ export const WideCardsContainer = ({ data }) => {
     // check if data them set state
     useEffect(() => {
         if (data) {
-            console.log(data)
+            // console.log(data)
           setItems(data);
         }
       }, [data]);
