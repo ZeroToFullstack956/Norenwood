@@ -5,7 +5,7 @@ import { HeroText } from "./heroText";
 import { HeroImage } from "./heroImage";
 
 
-export const Hero = ({ isMobileView }) => {
+export const Hero = ({ isMobileView, isCheckboxChecked}) => {
   return (
     <Flex
       direction={["column", "row"]}
@@ -16,18 +16,21 @@ export const Hero = ({ isMobileView }) => {
       overflow="hidden" 
       maxH="xl"
       >
-      <Image
-        src={backdrop}
-        alt='blue background with various shapes and designe'
-        w='95%'
-        h='100%'
-        position="absolute"
-        zIndex="-1"
-      />
+      {/* Render backdrop image only if isCheckboxChecked is false */}
+      {!isCheckboxChecked && (
+        <Image
+          src={backdrop}
+          alt='blue background with various shapes and designs'
+          w='95%'
+          h='100%'
+          position="absolute"
+          zIndex="-1"
+        />
+      )}
 
     <HeroText/>
 
-    <HeroImage isMobileView = {isMobileView}/>
+    <HeroImage isMobileView = {isMobileView} isCheckboxChecked={isCheckboxChecked}/>
 
     </Flex>
   )

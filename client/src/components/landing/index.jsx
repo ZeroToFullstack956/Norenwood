@@ -7,7 +7,7 @@ import { Iphone } from './images/3dPhone.jsx';
 import React, { useState } from 'react';
 //VideoButton.module.css. This change signifies that the styles in this file are a module and should be treated as such by the build tool
 import styles from './VideoButton.module.css';
-import { Box, Flex, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, } from '@chakra-ui/react';
+
 
 export const VideoButton = () => {
     const [isChecked, setIsChecked] = useState(false);
