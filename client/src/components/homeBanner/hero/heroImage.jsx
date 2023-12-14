@@ -7,10 +7,10 @@ import elipse4 from '../../../assets/Ellipse4.png'
 import elipse5 from '../../../assets/Ellipse5.png'
 import elipse6 from '../../../assets/Ellipse6.png'
 
-export const HeroImage = ({ isMobileView }) => {
+export const HeroImage = ({ isMobileView, isCheckboxChecked}) => {
 
     return(
-     <Box
+  <Box
       pos="relative"
       display="flex"
       alignItems={{ base: 'flex-end', md: 'center' }}
@@ -22,6 +22,17 @@ export const HeroImage = ({ isMobileView }) => {
       bottom={{ base: 2, sm: 10 }}
       top={{ base: 0, sm: -16, md: 1, lg: 1, xl:1 }}
     >
+      {isCheckboxChecked ? 
+      <Image
+          src={girl}
+          alt='a girl with a laptop sitting down'
+          boxSize={{ base: '40%', md: '40%'}}
+          h="auto"
+          objectFit="contain"
+          ml={{ base: 20, sm: 6, md: 6, lg: 12, xl: 20 }}
+      />
+  :
+    <>
       <Image
         src={isMobileView ? ztfs : girl}
         alt='a girl with a laptop sitting down'
@@ -87,7 +98,9 @@ export const HeroImage = ({ isMobileView }) => {
             objectFit="contain"
           />
       </Box>
-    </Box>
-    )
+    </>
+      }
+  </Box>
+  )
 
 }

@@ -26,7 +26,7 @@ export const Iphone = () => {
   }
 
   return (
-    <Canvas camera={cameraProps}>
+    <Canvas camera={cameraProps} >
       <Suspense fallback={null}>
         {/* Basic ambient light */}
         <ambientLight intensity={2.0} />

@@ -12,7 +12,7 @@ Zero.to.fullstack: our mission is to serve, support, and empower businesses, stu
 
 - **Type**: Microservice
   - A modular approach that builds applications as individual services. This allows for better scalability and maintenance.
-- **CI/CD**: Azure DevOps 🔄
+- **CI/CD**: GitHub 🔄
   - Continuous Integration and Continuous Delivery ensure rapid and reliable software updates.
 
 ---

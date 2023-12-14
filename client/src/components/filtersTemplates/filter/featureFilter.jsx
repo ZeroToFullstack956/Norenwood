@@ -10,11 +10,15 @@ import { DynamicCardContainer } from "../cardTemplates/carContainers/dynamicCard
 
 
 export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
+    // Ref for the dropdown container
+    const dropdownRef = useRef();
     // set the card data
     const [items, setItems] = useState(cardData);
     // State for search query
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    // State for the index of the currently focused suggestion
+    const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
     const trie = useRef(new Trie());
     let CardContainerComponent;
     // Populate the trie with titles from cardData
@@ -66,6 +70,38 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
             CardContainerComponent = null;
             break;
     }
+    // Function to handle key press in search input
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            // ... existing Enter key logic
+        } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault(); // Prevent the default input behavior
+
+            setFocusedSuggestionIndex(prevIndex => {
+                const newIndex = e.key === 'ArrowDown'
+                    ? Math.min(prevIndex + 1, suggestions.length - 1)
+                    : Math.max(prevIndex - 1, 0);
+
+                // Adjust scroll position
+                if (dropdownRef.current) {
+                    const suggestionElements = dropdownRef.current.childNodes;
+                    const focusedElement = suggestionElements[newIndex];
+                    if (focusedElement) {
+                        const dropdownRect = dropdownRef.current.getBoundingClientRect();
+                        const focusedRect = focusedElement.getBoundingClientRect();
+
+                        if (focusedRect.bottom > dropdownRect.bottom) {
+                            dropdownRef.current.scrollTop += (focusedRect.bottom - dropdownRect.bottom);
+                        } else if (focusedRect.top < dropdownRect.top) {
+                            dropdownRef.current.scrollTop -= (dropdownRect.top - focusedRect.top);
+                        }
+                    }
+                }
+
+                return newIndex;
+            });
+        }
+    };
 
     return (
         <Box width={["90%", "80%", "75%"]} mx="auto" py={4} mt={24}>
@@ -82,13 +118,14 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                         onChange={(e) => {
                             const query = e.target.value;
                             setSearchQuery(query);
-                            if (query.trim() === '') {  // Update the search box
+                            if (query.trim() === '') {  
                                 setSuggestions([]);
                             } else {
                                 const completions = trie.current.findCompletions(query.toLowerCase());
                                 setSuggestions(completions);
                             }
                         }}
+                        onKeyDown={handleKeyDown}
                         bg="white"
                         border="1px"
                         borderColor="gray.300"
@@ -99,7 +136,7 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                             size="sm" 
                             onClick={handleSearch} 
                             bg="transparent" 
-                            _hover={{ bg: 'gray.100' }}
+                            _hover={{ bg: 'blue.100' }}
                             border='.5px solid gray'
                         >
                             🔎
@@ -109,6 +146,7 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                     {/* Dropdown for suggestions */}
                     {suggestions.length > 0 && (
                             <VStack 
+                            ref={dropdownRef}
                             align="stretch" 
                             mt="1" 
                             position="absolute"
@@ -117,9 +155,9 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                             bg="rgba(255, 255, 255, 0.5)"
                             maxH="100px" // Adjust this value if necessary
                             overflowY="scroll" // Force scrollbar visibility
-                            borderRadius="md"
+                            borderRadius="10"
                             boxShadow="md"
-                            sx={{ 
+                            sx={{ // Custom scrollbar styles
                                 '&::-webkit-scrollbar': {
                                     width: '8px',
                                 },
@@ -128,15 +166,17 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                                 },
                                 '&::-webkit-scrollbar-thumb': {
                                     background: 'gray',
-                                    borderRadius: '24px',
+                                    borderRadius: '10px',
                                 },
-                            }} // Custom scrollbar styles
+                            }} 
                         >
                             {suggestions.slice(0, 5).map((suggestion, index) => ( // Only show first 5 suggestions
                                 <Button
                                     key={index}
                                     variant="ghost"
                                     justifyContent="start"
+                                    bg={index === focusedSuggestionIndex ? "#F2994A" : "transparent"} // Highlight focused item
+                                    borderRadius="0"
                                     onClick={() => setSearchQuery(suggestion)}
                                 >
                                     {suggestion}

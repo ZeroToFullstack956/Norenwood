@@ -1,5 +1,5 @@
 import { Stack, Box, Text, Flex } from '@chakra-ui/react';
-import {Logo} from '../images/logo';
+// import {Logo} from '../images/logo';
 import { css, keyframes } from '@emotion/react';
 
 export const LandingPageText = () => {
@@ -19,12 +19,12 @@ export const LandingPageText = () => {
       fontFamily="Inika"
       lineHeight="0.30"
       fontWeight="regular"
-      fontSize="96px"
+      fontSize="76px"
       color="#2F80ED"
       mixBlendMode="darken"
       width="100%px"
       height="100%"
-      maxWidth="75%"
+      maxWidth="100%"
       textAlign="center"
       // css={typewriterStyle}
     >
@@ -34,7 +34,7 @@ export const LandingPageText = () => {
         as="span"
         fontFamily="Inria Serif"
         lineHeight="0.48"
-        fontSize="48px"
+        fontSize="38px"
         color="#333333"
       >
         ech Empowerment Awaits
@@ -42,15 +42,15 @@ export const LandingPageText = () => {
       <Box
         as="span"
         fontFamily="Inria Serif"
-        lineHeight="1.64"
-        fontSize="14px"
+        lineHeight="1.0"
+        fontSize="12px"
         color="#333333"
       ></Box>
       <Box
         as="span"
         fontFamily="Inria Serif"
         lineHeight="1"
-        fontSize="36px"
+        fontSize="24px"
         color="#333333"
       >
         . Whether your a business, student or member of the communuty accelerate your track with Zero.ToFullstack. 

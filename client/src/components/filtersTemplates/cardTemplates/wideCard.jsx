@@ -15,7 +15,11 @@ export const WideCard = ({ image, address, title, time, description, link, date 
         boxShadow={boxShadow}
         transition="box-shadow 0.2s ease-in-out"
         _hover={{
-          boxShadow: hoverBoxShadow
+          boxShadow: hoverBoxShadow,
+          transition: "transform 0.25s ease-in-out",
+          '&:hover': {
+            transform: 'scale(1.1)' // This will make the card larger on hover
+          }
         }}
         p="0"
         m="4" // Added margin for some spacing between cards

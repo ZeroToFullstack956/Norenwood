@@ -16,7 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@react-three/drei": "^9.89.0",
     "@react-three/fiber": "^8.15.11",
-    "framer-motion": "^10.16.14",
+    "framer-motion": "^10.16.16",
     "gsap": "^3.12.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",

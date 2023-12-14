@@ -115,5 +115,14 @@
         "time": "06:00 PM - 09:00 PM",
         "date": "September 10, 2023",
         "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 25,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Tenth",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
     }
 ]
