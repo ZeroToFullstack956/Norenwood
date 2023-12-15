@@ -19,7 +19,7 @@ body {
     --color-invert: #ffffff;
     --clip-path: circle(15px at left);
     --clip-path-hover: circle(70px at left);
-    --clip-path-clicked: circle(100vw at left);
+    --clip-path-clicked: circle(250vw);
     --clip-path-custom: url(#custom-clip-path)  ;
     --duration: .4s;
     --timing-function: ease;
@@ -31,7 +31,15 @@ body {
     align-items: center;
     width: 100%;
     z-index: 2;
-   
+}
+
+/* Breakpoint at 769px */
+@media screen and (max-width: 770px) {
+  .wrapper {
+    /* min-width: 100vw;
+    min-height: 100vh; */
+    /* transform: translate(0%, 0%); */
+  }
 }
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
@@ -54,11 +62,11 @@ body {
   background: #c4cbde;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: 100%;
-  height: auto;
-  transform: translate(-50%, -50%); /* move the video from the bottom right back to the center, underneith the white wrapper */
+  width: 100vw; /* Sets the width to 100% of the viewport width */
+  height: 100vh; /* Sets the height to 100% of the viewport height */
+  object-fit: cover;  
+  /* move the video from the bottom right back to the center, underneith the white wrapper */
+  transform: translate(-50%, -50%); 
 }
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
@@ -212,22 +220,33 @@ body {
 }
 
 .svgMask{
+  margin-top: 10%;
   flex: 1;
   align-items: center;
   position: relative;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%
 }
 /* positions the svg over the dotsCard */
 .customSvg {
   position: absolute;
-  top: 20%;
+  top: 10%;
   width: 100%;
   height: 1%; /* sets svg heigh to minimal to acces layers below on hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  right: 8%;
+}
 
-}
-svg{
+.customSvg svg{
   border: 1px solid;
+  /* width: 200%; */
 }
+
 .mainContentContainer {
   display: flex;
   flex-direction: column;
@@ -237,13 +256,11 @@ svg{
 .lowerContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 55%;
-  margin: .5% auto; /* Center the container */
+  align-items: start;
+  width: 50%;
+  margin: .5% auto; 
 }
-.iphone{
-  height: 400px;
-}
+
 .underlay {
   position: absolute; 
   top: 0;
@@ -260,14 +277,6 @@ svg{
 .wrapper input:checked ~ .underlay {
   visibility: visible;
 }
-/* .underlayContent {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  width: 100%;
-  padding: 20px; 
-  box-sizing: border-box; 
-} */
 
 /* @media screen and (max-width: 768px) {
   .underlayContent {

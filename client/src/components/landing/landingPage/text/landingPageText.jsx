@@ -2,7 +2,7 @@ import { Stack, Box, Text, Flex } from '@chakra-ui/react';
 // import {Logo} from '../images/logo';
 import { css, keyframes } from '@emotion/react';
 
-export const LandingPageText = () => {
+export const LandingPageText = ({font_Size}) => {
 //   const typewriter = keyframes`
 //   from { width: 0; }
 //   to { width: 100%; }
@@ -19,7 +19,7 @@ export const LandingPageText = () => {
       fontFamily="Inika"
       lineHeight="0.30"
       fontWeight="regular"
-      fontSize="76px"
+      fontSize={{ base: "36px", sm: "46px", md: "40px", lg: "48px", xl: "56px", "2xl": "56px" }}
       color="#2F80ED"
       mixBlendMode="darken"
       width="100%px"
@@ -34,10 +34,10 @@ export const LandingPageText = () => {
         as="span"
         fontFamily="Inria Serif"
         lineHeight="0.48"
-        fontSize="38px"
+        fontSize={{ base: "22px", sm: "18px", md: "31px", lg: "30px", xl: "28px", "2xl": "28px" }}
         color="#333333"
       >
-        ech Empowerment Awaits
+        ech Empowerment Gateway
       </Box>
       <Box
         as="span"
@@ -50,13 +50,13 @@ export const LandingPageText = () => {
         as="span"
         fontFamily="Inria Serif"
         lineHeight="1"
-        fontSize="24px"
+        fontSize={font_Size}
         color="#333333"
       >
-        . Whether your a business, student or member of the communuty accelerate your track with Zero.ToFullstack. 
-        Our expertise in AWS/Azure cloud, web-development, programming and troubleshooting 
-        craft the digital backbone of your success. Dive into a journey where tailored solutions 
-        meet community collaboration, inciting innovation where we shape the future of tech, together.
+        . Streamline your tech journey with our curated, 
+        up-to-date ☁️ Cloud, web development 💻, and programming resources.   
+        Save time searching, streamline access to innovative 🛠️ tools and 🤖 AI solutions, 
+        and join a community shaping the future of technology 🚀.
       </Box>
     </Text>
  

@@ -25,6 +25,7 @@ export const Hero = ({ isMobileView, isCheckboxChecked}) => {
           h='100%'
           position="absolute"
           zIndex="-1"
+          
         />
       )}
 

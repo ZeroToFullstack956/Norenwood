@@ -1,17 +1,21 @@
 import React from 'react';
-import './dotCard.css'
+import cardStyles from './dotCard.module.css'
 
 
-export function DotsCard({content}) {
+
+export function DotsCard({content, content2}) {
   return (
   <>
-      <div className="card">
-  <div className="card__img" >
+      <div className={cardStyles.card}>
+  <div className={cardStyles.card__img} >
       {content}
-    <div className="card__grid-effect">
+      <div className={cardStyles.card_text}>
+        {content2}
+      </div>
+    <div className={cardStyles.card__gridEffect}>
       {/* Loop through numbers 1 to 100 */}
       {Array.from({ length: 100 }, (_, index) => (
-        <a key={index} className="card__grid-effect-tile" href='#'></a>
+        <a key={index} className={cardStyles.card__gridEffectTile} href='#'></a>
         ))}
     </div>
   </div>
