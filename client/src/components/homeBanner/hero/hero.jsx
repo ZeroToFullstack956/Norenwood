@@ -30,9 +30,7 @@ export const Hero = ({ isMobileView, isCheckboxChecked}) => {
       )}
 
     <HeroText/>
-
-    <HeroImage isMobileView = {isMobileView} isCheckboxChecked={isCheckboxChecked}/>
-
+        {isMobileView ? null : <HeroImage isCheckboxChecked={isCheckboxChecked}/>}
     </Flex>
   )
 }

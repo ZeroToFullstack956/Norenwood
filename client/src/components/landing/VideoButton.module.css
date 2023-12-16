@@ -62,8 +62,8 @@ body {
   background: #c4cbde;
   top: 50%;
   left: 50%;
-  width: 100vw; /* Sets the width to 100% of the viewport width */
-  height: 100vh; /* Sets the height to 100% of the viewport height */
+  width: 105vw; /* Sets the width to 100% of the viewport width */
+  height: 105vh; /* Sets the height to 100% of the viewport height */
   object-fit: cover;  
   /* move the video from the bottom right back to the center, underneith the white wrapper */
   transform: translate(-50%, -50%); 
@@ -194,7 +194,7 @@ body {
   /* width: 100%; */
   /* height: 100%; */
   border-radius: 25;
-  transform: translateY(calc(100vh - 90.5vh));
+  transform: translateY(calc(100vh - 115.25vh)) translateX(calc(100vw - 114.75vw));
   z-index: 4;
 } /*controls location of the click input*/
 
@@ -206,7 +206,7 @@ body {
 /* hides the text once the checkbox is checked */
 .wrapper input:checked ~ .text {
   --opacity: 1;
-  transform: translateY(calc(100vh - 90vh));
+  transform: translateY(calc(100vh - 115vh)) translateX(calc(100vw - 114.9vw));
   transition: opacity 0.3s var(--timing-function), transform 0.350s var(--timing-function);
   z-index: 3;
   color: aqua;
@@ -260,7 +260,7 @@ body {
   width: 50%;
   margin: .5% auto; 
 }
-
+/* controls positioning of the box which is the container for the box the underlay content is inside of */
 .underlay {
   position: absolute; 
   top: 0;
@@ -270,9 +270,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
-  align-items: center; 
-  z-index: 1; 
+  align-items: center;  
   visibility: hidden; 
+}
+/* controls positioning of the box the underlay content is inside of */
+.underlayContent{
+  transform: translateY(-25%);
 }
 .wrapper input:checked ~ .underlay {
   visibility: visible;

@@ -13,7 +13,8 @@ export const VideoButton = () => {
     const [isChecked, setIsChecked] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1300);
     const [isXSmallScreen, setIsXSmallScreen] = useState(window.innerWidth < 505);
-    
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
     };
@@ -25,6 +26,7 @@ export const VideoButton = () => {
         const width = window.innerWidth;
         setIsXSmallScreen(width < 505);
         setIsSmallScreen(width >= 505 && width < 1170);
+        setIsMobileView(width < 768);
       };
   
       window.addEventListener('resize', handleResize);
@@ -60,9 +62,9 @@ export const VideoButton = () => {
               <div className={styles.text}>
                 <span className="videoText" data-text={isChecked ? "⏪ Click to return" : "🎯 Click to watch"}></span>
               </div>
-              <div className={styles.underlay}>
+              <div className={styles.underlay}> {/* Manages the content on the bottom of the screen */}
                 <div className={styles.underlayContent}>
-                  {isChecked && <LandingUnderlay isCheckboxChecked={isChecked} />}
+                  {isChecked && <LandingUnderlay isCheckboxChecked={isChecked} isMobileView={isMobileView} />}
                 </div>
               </div>
             </div>

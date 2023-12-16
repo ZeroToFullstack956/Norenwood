@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { TopNavImage } from './navImg';
 import { gsap } from 'gsap';
 
-export const TopNavContentPages = () => {
+export const TopNavContentPages = ({ isMorphPresent }) => {
   const navItems = ["Home", "Contact", "Support"];
   const wavePathRef = useRef(null);
 
@@ -60,25 +60,27 @@ export const TopNavContentPages = () => {
       >
 
       <TopNavImage/>
-
-      <Box flex="1" position="relative" overflow="hidden" ml={2}>
+      {isMorphPresent === false && (
+      <Box flex="1" position="relative" overflow="hidden" ml={2} >
           <svg
-            viewBox="0 0 360 40"
+            viewBox="0 0 320 40"
             position="absolute"
             top="50%"
             left="0"
             w="100%"
             style={{ transform: "translateY(-5%)" }}
+            ml={2} 
           >
             <path
               ref={wavePathRef}
               fill="none"
               stroke="#2F80ED"
-              strokeWidth="2"
+              // strokeWidth="2"
               d="M0,20 Q45,20,90,20 T180,20 T270,20 T360,20 V40 H0 Z"
             />
           </svg>
       </Box>
+      )}
       <HStack spacing={4}>
           {navItems.map((item, index) => (
             <Link
@@ -88,7 +90,7 @@ export const TopNavContentPages = () => {
               fontFamily="Noto"
               lineHeight="1.5"
               fontWeight="semibold"
-              fontSize="16px"
+              fontSize={isMorphPresent ? "30px" : "16px"}
               color="#000000"
               p={2}
               borderRadius="md"

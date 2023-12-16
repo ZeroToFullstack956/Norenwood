@@ -34,7 +34,7 @@ export const HeroText = () => {
         <Text
           fontFamily="Noto Sans"
           lineHeight="1.75"
-          fontSize={{ base: ".75rem", sm: '1.0rem', md: "1.0rem", lg: "1.0rem", xl:'1.35rem' }}
+          fontSize={{ base: "1.1rem", sm: '1.2rem', md: "1.15rem", lg: "1.35rem", xl:'1.35rem' }}
           color="#ffffff"
           textAlign="left"
           >
