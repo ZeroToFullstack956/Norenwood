@@ -8,7 +8,7 @@ Zero.to.fullstack: our mission is to serve, support, and empower businesses, stu
 
 ## Architecture 🏗️
 
-**Overview**: The technical backbone of Code-Crafters.
+**Overview**: The technical backbone of Zero.to.fullstack.
 
 - **Type**: Microservice
   - A modular approach that builds applications as individual services. This allows for better scalability and maintenance.

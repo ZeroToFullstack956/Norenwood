@@ -10,7 +10,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" index element={<VideoButton/>} />
+        <Route path="/" index element={<HeroContent/>} />
           {/* create Service and booking routed in another route called protected routes */}
         {/* <Route path="/services" element={<ProtectedRoutes element={<Services />} />} /> */}
           {/* Appointments page Route */}
