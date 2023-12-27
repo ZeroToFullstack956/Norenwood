@@ -4,16 +4,21 @@ import { Box, Button, Text } from "@chakra-ui/react";
 
 export const Announcement = () => {
 
-let marquee = ["This", "text", "is", "for", "testing", "purposes", "hope", "it", "works."]
+    let marqueeText = "This text is for testing purposes hope it works ";
+    let marquee = Array(10).fill(marqueeText); 
 
     return(
         <Box>
         <Button type="button"
             w="100%"
-            p="1px 1px"
-            mx={2}
+            p="1em 1"
+            
+            left={0}
+            top="18vh"
+            zIndex={-1}
             overflow="hidden"
             whiteSpace="nowrap"
+            position="absolute"
             display="flex"
             color="#E5E42E"
             border-borderColor="none"
@@ -22,7 +27,6 @@ let marquee = ["This", "text", "is", "for", "testing", "purposes", "hope", "it",
             textTransform="uppercase"
             fontFamily="Work Sans"
             border="none"
-            top="18vh"
             borderBottom="2px solid #E5E4E2"
             backgroundColor="black"
             _hover={{ backgroundColor: "rgba(51, 51, 51, 0.025)",
@@ -39,7 +43,7 @@ let marquee = ["This", "text", "is", "for", "testing", "purposes", "hope", "it",
             key={index}
             as="span" 
             sx={{
-              animation: `marquee ${5}s infinite normal linear`,
+              animation: `marquee ${10}s infinite normal linear`,
               padding: "0 0.5em",
             }}>{item}</Text>
         ))}
