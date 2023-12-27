@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, VStack, HStack, Heading, Text, Button, Image, useColorModeValue, Flex, Link, Tooltip } from '@chakra-ui/react';
 
-export const DynamicCard = ({ cardData, onSelect, selectedCard }) => {
+export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => {
     const smallImageHeight = "177.5px";
     const imageHeight = ["310px", '335px' ];
 
@@ -11,6 +11,13 @@ export const DynamicCard = ({ cardData, onSelect, selectedCard }) => {
           transform: 'scale(1.1)' // This will make the card larger on hover
         }
     };
+
+    const swapTransitionStyle = {
+      transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
+      transform: isSelected ? "scale(1.05) translateX(-5%)" : "scale(1) translateY(0)", // Enlarge and move up if selected
+      opacity: isSelected ? 1 : 0.7, // More opaque if selected
+  };
+  
    // Function to render all cards
    const renderAllCards = () => {
     let allCards = [];
@@ -34,6 +41,7 @@ export const DynamicCard = ({ cardData, onSelect, selectedCard }) => {
  // Function to render a single card
  const renderLeftCard = (card, key) => {
     const { image, address, title, time, description, link, date } = card;
+    
     return (
     <Box
     onClick={() => onSelect(card)}
@@ -44,6 +52,9 @@ export const DynamicCard = ({ cardData, onSelect, selectedCard }) => {
     shadow="lg"
     position="relative"
     key={key}
+    sx={{
+      ...swapTransitionStyle, 
+  }}
   >
       <Box  
         w={["100%"]}
@@ -74,7 +85,7 @@ const renderRightCards = (cards, groupKey) => {
         <VStack spacing={4} mb={12} key={groupKey}>
           {cards.map((card, index) => {
           const { image, address, title, time, description, link, date } = card;
-          const isSelected = card === selectedCard
+          
             return(
                 <Tooltip label="Click to enlarge details" fontSize="md" key={`${groupKey}-card-${index}`}>
                 <Flex
@@ -89,6 +100,7 @@ const renderRightCards = (cards, groupKey) => {
                     w="100%"
                     h={smallImageHeight}
                     sx={{ 
+                      ...swapTransitionStyle, 
                         ... (hoverStyle),
                         "@media screen and (max-width: 1200px)": {
                         fontSize: "smaller", // Adjust font size

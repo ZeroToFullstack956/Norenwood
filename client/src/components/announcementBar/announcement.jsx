@@ -21,7 +21,7 @@ export const Announcement = () => {
             position="absolute"
             display="flex"
             color="#E5E42E"
-            border-borderColor="none"
+            
             lineHeight="1"
             fontSize="1.25rem"
             textTransform="uppercase"

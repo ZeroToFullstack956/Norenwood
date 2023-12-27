@@ -16,11 +16,11 @@ export const HeroContent = ({ currentView, changeViewFromChild }) => {
     setIsMobileView(isMobile);
   };
 
-  // set the active link from the child component
+  // set the active link from the child component, this handles the top-page navbar only
   const handleActiveLinkChange = (activeLinkId) => {
     changeViewFromChild(activeLinkId)
     setActiveLink(activeLinkId)
-    // console.log("Received active link ID:", activeLinkId);
+
   };
 
   return (

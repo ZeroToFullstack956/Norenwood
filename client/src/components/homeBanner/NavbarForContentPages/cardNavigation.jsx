@@ -11,26 +11,24 @@ const [screenSize, setScreenSize] = useState(window.innerWidth);
 
 const isMobileView = screenSize <= 480;
 
-// moves pointer y-axis
-const pointerTransform = {large:'20px', small: '35px'}
+// moves pointer y-axis to acomodate for the navigation items being moultiple words
+const pointerTransform = {large:'20px', small: '20px'}
 const pointerTopPosition = screenSize > 626 ? pointerTransform.large : pointerTransform.small;
 
 // Navigation items
 const navItems = [
   { label: 'Schedule', id: 'Schedule' },
-  { label: 'For Business', id: 'Business' },
-  { label: 'For Students', id: 'Students' },
+  { label: 'Gallery', id: 'Gallery' },
+  { label: 'Specials', id: 'Specials' },
   { label: 'Contact', id: 'Contact'},
-  { label: 'Services', id: 'Services'},
+  { label: 'About', id: 'About'},
 ];
 
 // dynamic values based on the screen width to adjust features
 const imgTransform = {
-  large: { Community: '12px', Business: '130px', Students: '250px', Events:'350px', Services:'430px' },
-  medium: { Community: '2px', Business: '100px', Students: '200px', Events:'285px', Services:'355px'  },
-  small: { Community: '2px', Business: '90px', Students: '180px', Events:'265px', Services:'345px'  },
-  xsmall: { Community: '2px', Business: '90px', Students: '180px', Events:'265px', Services:'330px' },
-  custom: { Community: '2px', Business: '90px', Students: '170px', Events:'240px', Services:'310px'  },   
+  large: { Schedule: '3px', Gallery: '90px', Specials: '175px', Contact:'263px', About:'345px' },
+  medium: { Schedule: '0px', Gallery: '70px', Specials: '145px', Contact:'217px', About:'290px'  },
+  custom: { Schedule: '-3px', Gallery: '73px', Specials: '145px', Contact:'218px', About:'283px'  },   
 };
 
 // Responsive styles for Links and Separators
@@ -46,10 +44,7 @@ const separatorStyle = {
 
 // transforms pointer movement based on screen size
 const currentTransform = screenSize > 944 ? imgTransform.large : 
-                         screenSize >= 767 ? imgTransform.medium : 
-                         screenSize > 615 ? imgTransform.medium: 
-                         screenSize > 599 ? imgTransform.small : 
-                         screenSize > 564 ? imgTransform.xsmall :
+                         screenSize > 564 ? imgTransform.medium :
                          imgTransform.custom;
 
 // handle the active link in the nav bar, set it and pass it up to the parent

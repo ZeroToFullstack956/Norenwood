@@ -16,14 +16,28 @@ export const DynamicCardContainer = ({ data }) => {
         setCurrentPage(pageNumber);
     };
 
+    // const handleCardSelect = (selected) => {
+    //     setSelectedCard(selected);
+    //     const newData = [...data];
+    //     const selectedIndex = newData.indexOf(selected);
+    //     const groupIndex = Math.floor(selectedIndex / 4) * 4;
+    //     [newData[selectedIndex], newData[groupIndex]] = [newData[groupIndex], newData[selectedIndex]];
+    //     setItems(groupItems(newData));
+    // };
+
     const handleCardSelect = (selected) => {
         setSelectedCard(selected);
         const newData = [...data];
-        const selectedIndex = newData.indexOf(selected);
+        const selectedIndex = newData.findIndex(card => card === selected);
         const groupIndex = Math.floor(selectedIndex / 4) * 4;
-        [newData[selectedIndex], newData[groupIndex]] = [newData[groupIndex], newData[selectedIndex]];
+    
+        // Remove the selected card and re-insert it at the start of its group
+        const selectedCardData = newData.splice(selectedIndex, 1)[0];
+        newData.splice(groupIndex, 0, selectedCardData);
+    
         setItems(groupItems(newData));
     };
+    
 
     const groupItems = (items) => {
         const groupedData = [];

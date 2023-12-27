@@ -19,6 +19,7 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
     const [suggestions, setSuggestions] = useState([]);
     // State for the index of the currently focused suggestion
     const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
+
     const trie = useRef(new Trie());
     let CardContainerComponent;
     // Populate the trie with titles from cardData
@@ -52,24 +53,8 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
         setItems(filteredItems);
         setSuggestions([]); // Clear suggestions after search
     };
- 
-    // switch statment to render the cards based off user selection from the NavBar
-    switch (secondaryNavSelection) {
-        case 'Business':
-        case 'Students':
-            CardContainerComponent = DynamicCardContainer;
-            break;
-        case 'Services':
-        case 'Schedule':
-            CardContainerComponent = WideCardsContainer;
-            break;
-        case 'Events':
-            CardContainerComponent = () => <Text>This is the CalendarCardContainer</Text>
-            break;
-        default:
-            CardContainerComponent = null;
-            break;
-    }
+
+
     // Function to handle key press in search input
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -102,6 +87,29 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
             });
         }
     };
+
+        // switch statment to render the cards based off user selection from the NavBar
+    switch (secondaryNavSelection) {
+        case 'Schedule':
+            CardContainerComponent = () => <Text>This is the CalendarCardContainer</Text>
+            CardContainerComponent = WideCardsContainer;
+            break;
+        case 'Gallery':
+            CardContainerComponent = DynamicCardContainer;
+            break;
+        case 'Specials':
+            CardContainerComponent = DynamicCardContainer;
+            break;
+        case 'Contact':
+            CardContainerComponent = () => <Text>This is the Contact Container</Text>
+            break;
+        case 'About':
+            CardContainerComponent = () => <Text>This is the About Us Container</Text>
+            break;
+        default:
+            CardContainerComponent = null;
+            break;
+    }
 
     return (
         <Box width={["90%", "80%", "75%"]} mx="auto" py={4} mt={24}>
