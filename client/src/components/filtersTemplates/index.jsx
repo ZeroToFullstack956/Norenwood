@@ -9,11 +9,13 @@ export const PropogateTemplates = ({ secondaryNavSelection }) => {
     // check what tab the nav bar is on to render the content --to-do: this needs work
     useEffect(() => {
         switch (secondaryNavSelection) {
-            case 'Community':
+            case 'Schedule':
                 setCardDataObject(mockData);
                 /// API call to get the community data
                 break;
-            case 'Business':
+            case 'Contact':
+                console.log("contact")
+                // call the contact page info
                 setCardDataObject(mockData);
                 // API call to get the business data
                 break;

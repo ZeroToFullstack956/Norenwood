@@ -5,32 +5,33 @@ import { HeroText } from "./heroText";
 import { HeroImage } from "./heroImage";
 
 
-export const Hero = ({ isMobileView, isCheckboxChecked}) => {
+export const Hero = () => {
   return (
     <Flex
-      direction={["column", "row"]}
+      direction="column"
       alignItems="center"
       justifyContent="center" 
       position="relative"
       borderRadius={25}
-      overflow="hidden" 
-      maxH="xl"
+      overflow="hidden"
+      h={{ base: '70vh', md: '60vh' }}
+      w={{ base: '85vw', md: '85vw' }} // Set width to 85% of the viewport width
+      m="0 auto" // Set margin to auto to center the Flex box
       >
-      {/* Render backdrop image only if isCheckboxChecked is false */}
-      {!isCheckboxChecked && (
+      {/* Render backdrop image */}
         <Image
           src={backdrop}
-          alt='blue background with various shapes and designs'
-          w='95%'
-          h='100%'
+          alt='forest background with various shapes and designs'
+          w='full'
+          h='full'
+          objectFit="cover"
+          objectPosition="center"
+          borderRadius={25}
           position="absolute"
-          zIndex="-1"
-          
+          zIndex={0}
         />
-      )}
-
+    <HeroImage/>
     <HeroText/>
-        {isMobileView ? null : <HeroImage isCheckboxChecked={isCheckboxChecked}/>}
     </Flex>
   )
 }

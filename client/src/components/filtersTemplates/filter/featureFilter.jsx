@@ -60,7 +60,7 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
             CardContainerComponent = DynamicCardContainer;
             break;
         case 'Services':
-        case 'Community':
+        case 'Schedule':
             CardContainerComponent = WideCardsContainer;
             break;
         case 'Events':

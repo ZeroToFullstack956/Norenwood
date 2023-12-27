@@ -2,7 +2,7 @@ import React from 'react';
 import {Box, Text, VStack, Button, Heading, Flex, useColorModeValue, Link} from '@chakra-ui/react';
 
 export const WideCard = ({ image, address, title, time, description, link, date }) => {
-    const cardWidth = ["100%", "100%", "900px"]; // Responsive card width
+    const cardWidth = ["100%", "100%", "90vw"]; // Responsive card width
     const imageHeight = ["200px", "250px", "310px"]; // Responsive image height
     const boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)'; // Box shadow
     const hoverBoxShadow = '0 8px 25px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)'; // Hover box shadow

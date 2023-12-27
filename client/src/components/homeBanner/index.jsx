@@ -1,21 +1,24 @@
 import { Hero } from './hero/hero.jsx';
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { TopNavContentPages } from '../homeBanner/NavbarForContentPages/topPageNav.jsx';
 import { CardNavbar } from './NavbarForContentPages/cardNavigation.jsx';
 import { PropogateTemplates } from '../filtersTemplates/index.jsx'
 
 // Structure and background for the content pages
-export const HeroContent = () => {
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 480);
-  const [activeLink, setActiveLink] = useState('Community')
+export const HeroContent = ({ currentView, changeViewFromChild }) => {
 
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 480);
+  const [activeLink, setActiveLink] = useState(currentView)
+  
   // change the view to icons for mobile
   const handleMobileViewChange = (isMobile) => {
     setIsMobileView(isMobile);
   };
+
   // set the active link from the child component
   const handleActiveLinkChange = (activeLinkId) => {
+    changeViewFromChild(activeLinkId)
     setActiveLink(activeLinkId)
     // console.log("Received active link ID:", activeLinkId);
   };
@@ -25,13 +28,15 @@ export const HeroContent = () => {
       direction="column" 
       width="100vw"
       height="100%"
-      background="linear-gradient(0deg, #56ccf2 0%, #56ccf200 75%)"
+      background="linear-gradient(0deg,#8fbc8f 15%, #deb887 70%)"
+      zIndex="-2"
+
     >
-      <TopNavContentPages />
-      <Flex paddingX={{ base: 7, sm: 6, md: 6, lg: 12, xl: 20 }} >
+      <TopNavContentPages onNavLinkClick={handleActiveLinkChange}/>
+      <Flex paddingX={{ base: "8vw", sm: "8vw", md: "8vw", lg: "8vw", xl: "8vw"   }} >
         <Box position="relative">
-          <Hero isMobileView={isMobileView}/>
-          <CardNavbar onMobileViewChange={handleMobileViewChange} onActiveLinkChange={handleActiveLinkChange} />
+          <Hero />
+          <CardNavbar viewChangeFromParent={currentView} onMobileViewChange={handleMobileViewChange} onActiveLinkChange={setActiveLink} />
         </Box>
       </Flex>
 

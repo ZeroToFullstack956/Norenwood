@@ -4,23 +4,26 @@ import { motion } from "framer-motion"
 import pointer from '../../../assets/pointer.png';
 
 
-export const CardNavbar = ({ onMobileViewChange, onActiveLinkChange }) => {
+export const CardNavbar = ({ onMobileViewChange, viewChangeFromParent, onActiveLinkChange }) => {
 // Set the initial state where the pointer starts
-const [activeLink, setActiveLink] = useState('Community');
+const [activeLink, setActiveLink] = useState(viewChangeFromParent);
 const [screenSize, setScreenSize] = useState(window.innerWidth);
 
 const isMobileView = screenSize <= 480;
+
 // moves pointer y-axis
 const pointerTransform = {large:'20px', small: '35px'}
 const pointerTopPosition = screenSize > 626 ? pointerTransform.large : pointerTransform.small;
+
 // Navigation items
 const navItems = [
-  { label: 'Community', id: 'Community' },
+  { label: 'Schedule', id: 'Schedule' },
   { label: 'For Business', id: 'Business' },
   { label: 'For Students', id: 'Students' },
-  { label: 'Events', id: 'Events'},
+  { label: 'Contact', id: 'Contact'},
   { label: 'Services', id: 'Services'},
 ];
+
 // dynamic values based on the screen width to adjust features
 const imgTransform = {
   large: { Community: '12px', Business: '130px', Students: '250px', Events:'350px', Services:'430px' },
@@ -29,15 +32,18 @@ const imgTransform = {
   xsmall: { Community: '2px', Business: '90px', Students: '180px', Events:'265px', Services:'330px' },
   custom: { Community: '2px', Business: '90px', Students: '170px', Events:'240px', Services:'310px'  },   
 };
+
 // Responsive styles for Links and Separators
 const linkStyle = { 
   fontSize: screenSize > 944 ? 'md' : screenSize > 410 ? 'xs' : 'xs', // Smaller font size for very small screens
   mr: screenSize > 410 ? 2 : 2, // Smaller margin for very small screens
 };
+
 // adjusts margin 
 const separatorStyle = { 
   mx: screenSize > 410 ? 2 : 2, // Smaller margin for very small screens
 };
+
 // transforms pointer movement based on screen size
 const currentTransform = screenSize > 944 ? imgTransform.large : 
                          screenSize >= 767 ? imgTransform.medium : 
@@ -45,11 +51,14 @@ const currentTransform = screenSize > 944 ? imgTransform.large :
                          screenSize > 599 ? imgTransform.small : 
                          screenSize > 564 ? imgTransform.xsmall :
                          imgTransform.custom;
+
 // handle the active link in the nav bar, set it and pass it up to the parent
 const setActiveLinkAndNotifyParent = (linkId) => {
+
   setActiveLink(linkId);
-  onActiveLinkChange(linkId); // Notify the parent component
-};                       
+  onActiveLinkChange(linkId); // Notifying the parent component
+};
+
 // deals with screen size changes
 useEffect(() => {
   const handleResize = () => {
@@ -67,7 +76,7 @@ const MobileNav = () => (
     {navItems.map((item, index) => (
       <GridItem key={item.id} colSpan={index === 4 ? 2 : 1}>
         <Button
-          onClick={() => setActiveLinkAndNotifyParent(item.id)}
+          onClick={() =>{ setActiveLinkAndNotifyParent(item.id) }}
           colorScheme={activeLink === item.id ? "blue" : "gray"}
           w="100%" // Full width of the grid item
         >
