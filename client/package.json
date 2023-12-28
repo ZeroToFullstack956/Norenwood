@@ -1,10 +1,11 @@
 {
-  "name": "codecrafters-community-project",
+  "name": "norenwood",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d build",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -19,6 +20,7 @@
     "framer-motion": "^10.16.16",
     "react-calendar": "^4.7.0",
     "react-dom": "^18.2.0",
+    "gh-pages": "^6.0.0",
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {

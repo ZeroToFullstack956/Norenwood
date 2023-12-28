@@ -26,15 +26,13 @@ export const PropogateTemplates = ({ secondaryNavSelection }) => {
                 setCardDataObject(mocData2);
                 break;
             case 'Contact':
-
-                console.log(secondaryNavSelection)
-                // Code for 'Contact'
+               
                 break;
             case 'About':
-                // Code for 'About'
+               
                 break;
             default:
-                // Default case
+                break;
         }
     }, [secondaryNavSelection]);
 
