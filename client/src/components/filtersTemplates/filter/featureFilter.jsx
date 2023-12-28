@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Flex, Text, IconButton, VStack ,HStack, Button, Tooltip, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Spinner, Box, Flex, Text, IconButton, VStack ,HStack, Button, Tooltip, Input, InputGroup, InputRightElement, Center } from "@chakra-ui/react";
 import { CalendarIcon, ViewIcon } from '@chakra-ui/icons';
 import { sortByLocation } from "../../../utils/sortByLocation";
 import Trie from '../../../utils/textSearchTrie'
-import { WideCardsContainer } from "../cardTemplates/carContainers/wideCardContainer";
-import { DynamicCardContainer } from "../cardTemplates/carContainers/dynamicCardContainer";
-// import { CalendarCardContainer } from "../cardTemplates/carContainers/calendarCardContainer";
+import { WideCardsContainer } from "../cardTemplates/cardContainers/wideCardContainer";
+import { DynamicCardContainer } from "../cardTemplates/cardContainers/dynamicCardContainer";
+import { GalleryContainer } from "../cardTemplates/cardContainers/slidingGalaryContainer";
+import { AboutContentContainer } from "../cardTemplates/cardContainers/about";
+import { ContactContainer } from "../cardTemplates/cardContainers/contact";
+import { MyCalendar } from "../cardTemplates/cardContainers/calander.jsx";
 // import { RenderPagination } from "../../pagination/RenderPagination";
 
 
@@ -17,6 +20,7 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
     // State for search query
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [isLoading, setLoading] = useState(false);
     // State for the index of the currently focused suggestion
     const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
 
@@ -46,14 +50,34 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
 
     // Function to handle search
     const handleSearch = () => {
+        setLoading(true);
+        
         const filteredItems = cardData.filter(item =>
-            item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.description.toLowerCase().includes(searchQuery.toLowerCase())
+          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        setItems(filteredItems);
-        setSuggestions([]); // Clear suggestions after search
-    };
+        
+        setTimeout(() => {
+          setItems(filteredItems);
+          setSuggestions([]); // Clear suggestions after search
+          setLoading(false);
+        }, 1250);
+      };
 
+    const handleInputChange = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        if (query.trim() === '') {  
+            setSuggestions([]);
+        } else {
+            const completions = trie.current.findCompletions(query.toLowerCase());
+            setSuggestions(completions);
+        }
+      };
+      // handling the calander events in the cild component
+      const handleTileClick = (title) => {
+        setSearchQuery(title);
+      };
 
     // Function to handle key press in search input
     const handleKeyDown = (e) => {
@@ -91,20 +115,19 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
         // switch statment to render the cards based off user selection from the NavBar
     switch (secondaryNavSelection) {
         case 'Schedule':
-            CardContainerComponent = () => <Text>This is the CalendarCardContainer</Text>
             CardContainerComponent = WideCardsContainer;
             break;
         case 'Gallery':
-            CardContainerComponent = DynamicCardContainer;
+            CardContainerComponent = GalleryContainer
             break;
         case 'Specials':
             CardContainerComponent = DynamicCardContainer;
             break;
         case 'Contact':
-            CardContainerComponent = () => <Text>This is the Contact Container</Text>
+            CardContainerComponent = ContactContainer
             break;
         case 'About':
-            CardContainerComponent = () => <Text>This is the About Us Container</Text>
+            CardContainerComponent = AboutContentContainer
             break;
         default:
             CardContainerComponent = null;
@@ -114,43 +137,39 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
     return (
         <Box width={["90%", "80%", "75%"]} mx="auto" py={4} mt={24}>
                 {/* Outer Flex container keeps search bar in place upon search*/}
-                <Flex justifyContent="space-between" mb={4}>
+            <Flex justifyContent="space-between" mb={4}>
                 {/* Left section: Featured */}
+                {((CardContainerComponent === WideCardsContainer) || (CardContainerComponent === DynamicCardContainer) || (CardContainerComponent === GalleryContainer)) && (
                 <Text fontSize="2xl" fontWeight="bold" alignSelf="center">Featured</Text>
+                )}
+
                 {/* Middle section: Search bar */}
                 <Box position="relative" width={["90%", "400px", "400px"]} top={["-3.5rem", "-3.5rem", "-2rem"]} alignSelf="center">
-                    <InputGroup size="md" m={1}>
-                    <Input 
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={(e) => {
-                            const query = e.target.value;
-                            setSearchQuery(query);
-                            if (query.trim() === '') {  
-                                setSuggestions([]);
-                            } else {
-                                const completions = trie.current.findCompletions(query.toLowerCase());
-                                setSuggestions(completions);
-                            }
-                        }}
-                        onKeyDown={handleKeyDown}
-                        bg="white"
-                        border="1px"
-                        borderColor="gray.300"
-                    />
-                    <InputRightElement width="4.5rem">
-                        <Button 
-                            h="1.75rem" 
-                            size="sm" 
-                            onClick={handleSearch} 
-                            bg="transparent" 
-                            _hover={{ bg: 'blue.100' }}
-                            border='.5px solid gray'
-                        >
-                            🔎
-                        </Button>
-                    </InputRightElement>
-                </InputGroup>
+                    {(CardContainerComponent !== AboutContentContainer && CardContainerComponent !== ContactContainer) && (
+                        <InputGroup size="md" m={1}>
+                            <Input 
+                            placeholder={CardContainerComponent === GalleryContainer ? "Category search \"fantasy, celtic\" etc..." : "Search..."}
+                            value={searchQuery}
+                            onChange={handleInputChange}
+                            onKeyDown={handleKeyDown}
+                            bg="white"
+                            border="1px"
+                            borderColor="gray.300">
+                            </Input>
+                            <InputRightElement width="4.5rem" children={isLoading ? <Spinner size="md" /> : null}>
+                            <Button 
+                                h="1.75rem" 
+                                size="sm" 
+                                onClick={handleSearch} 
+                                bg="transparent" 
+                                _hover={{ bg: 'blue.100' }}
+                                border='.5px solid gray'
+                            >
+                                🔎
+                            </Button>
+                            </InputRightElement>
+                        </InputGroup>
+                        )}
                     {/* Dropdown for suggestions */}
                     {suggestions.length > 0 && (
                             <VStack 
@@ -195,20 +214,35 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                 </Box>
                 {/* Right section: View and icons */}
                 <HStack spacing={4} alignSelf="center">
-                    <Text>View</Text>
-                    <Tooltip label="Sort by Date" placement="top">
-                        <IconButton aria-label="Sort by Date" icon={<CalendarIcon />} onClick={sortByDate} />
-                    </Tooltip>
-                    <Tooltip label="Sort by Location" placement="top">
-                        <IconButton aria-label="Sort by Location" icon={<ViewIcon />} onClick={sortByLocation} />
-                    </Tooltip>
+                    
+                    {CardContainerComponent == WideCardsContainer && (
+                        <>
+                        <Text>View</Text>
+                        <Tooltip label="Sort by Date" placement="top">
+                            <IconButton aria-label="Sort by Date" icon={<CalendarIcon />} onClick={sortByDate} />
+                        </Tooltip>
+                        <Tooltip label="Sort by Location" placement="top">
+                            <IconButton aria-label="Sort by Location" icon={<ViewIcon />} onClick={sortByLocation} />
+                        </Tooltip>
+                        </>
+                    )}
                 </HStack>
             </Flex>
                 {/* Separation line */}
             <Box borderBottom="1px" borderColor="gray.200" mb={4} />
                 {/* Rendering the card templates through the card container, passing in the sorted data */}
-                  {/* Conditional rendering of the card container */}
-            {CardContainerComponent && <CardContainerComponent data={items} />}
+                  {/* Conditional rendering of the card containers and calander */}
+                  {isLoading ? 
+                    <Center> 
+                        <Box height="100vh" display="flex" alignItems="top" justifyContent="center">
+                            <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl"/>
+                        </Box> 
+                    </Center> : 
+                    <>
+                        {secondaryNavSelection === 'Schedule' && <MyCalendar data={items} onTileClick={handleTileClick}/>}
+                        {CardContainerComponent && <CardContainerComponent data={items} />}
+                    </>
+                }
         </Box>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { VStack } from '@chakra-ui/react';
 import { RenderPagination } from '../../../pagination/RenderPagination';
-import { WideCard } from '../wideCard';
+import { WideCard } from '../cards/wideCard';
 
 // container for mapping over the content of the template
 export const WideCardsContainer = ({ data }) => {

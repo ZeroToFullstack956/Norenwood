@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { VStack } from '@chakra-ui/react';
 import { RenderPagination } from '../../../pagination/RenderPagination';
-import { DynamicCard } from '../dynamicCard';
+import { DynamicCard } from '../cards/dynamicCard';
 
 export const DynamicCardContainer = ({ data }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,28 +15,14 @@ export const DynamicCardContainer = ({ data }) => {
         setCurrentPage(pageNumber);
     };
 
-    // const handleCardSelect = (selected) => {
-    //     setSelectedCard(selected);
-    //     const newData = [...data];
-    //     const selectedIndex = newData.indexOf(selected);
-    //     const groupIndex = Math.floor(selectedIndex / 4) * 4;
-    //     [newData[selectedIndex], newData[groupIndex]] = [newData[groupIndex], newData[selectedIndex]];
-    //     setItems(groupItems(newData));
-    // };
-
     const handleCardSelect = (selected) => {
         setSelectedCard(selected);
         const newData = [...data];
-        const selectedIndex = newData.findIndex(card => card === selected);
+        const selectedIndex = newData.indexOf(selected);
         const groupIndex = Math.floor(selectedIndex / 4) * 4;
-    
-        // Remove the selected card and re-insert it at the start of its group
-        const selectedCardData = newData.splice(selectedIndex, 1)[0];
-        newData.splice(groupIndex, 0, selectedCardData);
-    
+        [newData[selectedIndex], newData[groupIndex]] = [newData[groupIndex], newData[selectedIndex]];
         setItems(groupItems(newData));
     };
-    
 
     const groupItems = (items) => {
         const groupedData = [];

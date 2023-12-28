@@ -15,19 +15,19 @@ export const PropogateTemplates = ({ secondaryNavSelection }) => {
     useEffect(() => {
         switch (secondaryNavSelection) {
             case 'Schedule':
-                console.log("Setting card data for Schedule", mockData);
                 setCardDataObject(mockData);
-                console.log("cardObjectData-schedule", cardDataObject)
                 break;
             case 'Gallery':
-                console.log("Setting card data for Gallery", mocData2);
+                
                 setCardDataObject(mocData2);
-                console.log("cardObjectData-gallery", cardDataObject)
+                
                 break;
             case 'Specials':
-                // Code for 'Specials'
+                setCardDataObject(mocData2);
                 break;
             case 'Contact':
+
+                console.log(secondaryNavSelection)
                 // Code for 'Contact'
                 break;
             case 'About':
@@ -41,7 +41,7 @@ export const PropogateTemplates = ({ secondaryNavSelection }) => {
     useEffect(() => {
         console.log("cardDataObject updated:", cardDataObject);
     }, [cardDataObject]);
-    
+
     return (
         <>
         <FeatureFilter cardData={cardDataObject} secondaryNavSelection={secondaryNavSelection} />

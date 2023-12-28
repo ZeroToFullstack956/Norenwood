@@ -12,10 +12,12 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@react-three/drei": "^9.89.0",
+    "chakra-ui-carousel": "^1.0.14",
     "framer-motion": "^10.16.16",
+    "react-calendar": "^4.7.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1"
   },

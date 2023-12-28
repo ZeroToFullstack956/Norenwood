@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, VStack, HStack, Heading, Text, Button, Image, useColorModeValue, Flex, Link, Tooltip } from '@chakra-ui/react';
 
-export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => {
+export const DynamicCard = ({ cardData, onSelect, selectedCard }) => {
     const smallImageHeight = "177.5px";
-    const imageHeight = ["310px", '335px' ];
+    const imageHeight = ["310px", '375px' ];
 
     const hoverStyle = {
         transition: "transform 0.25s ease-in-out",
@@ -11,13 +11,6 @@ export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => 
           transform: 'scale(1.1)' // This will make the card larger on hover
         }
     };
-
-    const swapTransitionStyle = {
-      transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
-      transform: isSelected ? "scale(1.05) translateX(-5%)" : "scale(1) translateY(0)", // Enlarge and move up if selected
-      opacity: isSelected ? 1 : 0.7, // More opaque if selected
-  };
-  
    // Function to render all cards
    const renderAllCards = () => {
     let allCards = [];
@@ -41,7 +34,6 @@ export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => 
  // Function to render a single card
  const renderLeftCard = (card, key) => {
     const { image, address, title, time, description, link, date } = card;
-    
     return (
     <Box
     onClick={() => onSelect(card)}
@@ -52,9 +44,6 @@ export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => 
     shadow="lg"
     position="relative"
     key={key}
-    sx={{
-      ...swapTransitionStyle, 
-  }}
   >
       <Box  
         w={["100%"]}
@@ -68,7 +57,6 @@ export const DynamicCard = ({ cardData, onSelect, isSelected, selectedCard}) => 
     <Box p="6">
       <Heading fontSize="xl" fontWeight="semibold" as="h3" lineHeight="tight">
         {title}
-        <Text fontSize="xs" as="h1" >{date} - {time}</Text>
       </Heading>
       <Text fontSize="xs" as="h1" >{address}</Text>
       <Text mt={2}>{description}</Text>
@@ -85,7 +73,6 @@ const renderRightCards = (cards, groupKey) => {
         <VStack spacing={4} mb={12} key={groupKey}>
           {cards.map((card, index) => {
           const { image, address, title, time, description, link, date } = card;
-          
             return(
                 <Tooltip label="Click to enlarge details" fontSize="md" key={`${groupKey}-card-${index}`}>
                 <Flex
@@ -100,7 +87,6 @@ const renderRightCards = (cards, groupKey) => {
                     w="100%"
                     h={smallImageHeight}
                     sx={{ 
-                      ...swapTransitionStyle, 
                         ... (hoverStyle),
                         "@media screen and (max-width: 1200px)": {
                         fontSize: "smaller", // Adjust font size
@@ -143,9 +129,7 @@ const renderRightCards = (cards, groupKey) => {
                     objectFit="cover"
                     />
                     <Box p="4" flex="1">
-                    <Heading fontSize="lg" fontWeight="bold" as="h3">
-                        {title}
-                    </Heading>
+ 
                     <Text mt={0} >{description}</Text>
                     <Button mt={2} colorScheme="teal" className="dynamic-button" as={Link} href={link}>
                         Learn More
@@ -167,36 +151,3 @@ const renderRightCards = (cards, groupKey) => {
     </>
   );
 };
-//         <Box
-//             p={5}
-//             borderWidth="1px"
-//             borderRadius="lg"
-//             boxShadow="md"
-//             bg={useColorModeValue('white', 'gray.800')}
-//             onClick={onSelect}
-//             style={{ transform: isSelected ? 'scale(1.1)' : 'scale(1)' }}
-//         >
-//         <Image src={image} borderRadius="md" />
-//         <Heading size="md" my="2">
-//           {title}
-//         </Heading>
-//         <Link
-//           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
-//           isExternal
-//           fontSize={["sm", "md"]}
-//           color="gray.500"
-//           _hover={{ textDecoration: 'underline' }}
-//         >
-//           {address}
-//         </Link>
-//         <Text mb="3">{description}</Text>
-//         <Text fontSize={["xs", "sm"]} color="gray.500">
-//           {time} - {date}
-//         </Text>
-//         <Button colorScheme="blue" variant="outline" as={Link} href={link}>
-//           More Info
-//         </Button>
-//       </Box>
-    
-//   );
-// };
