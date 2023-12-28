@@ -30,17 +30,17 @@ export const HeroContent = ({ currentView, changeViewFromChild }) => {
       height="100%"
       background="linear-gradient(0deg,#8fbc8f 15%, #deb887 70%)"
       zIndex="-2"
-
+     
     >
-      <TopNavContentPages onNavLinkClick={handleActiveLinkChange}/>
-      <Flex paddingX={{ base: "8vw", sm: "8vw", md: "8vw", lg: "8vw", xl: "8vw"   }} >
+      {/* <TopNavContentPages onNavLinkClick={handleActiveLinkChange}/> */}
+      <Flex paddingX={{ base: "8vw", sm: "8vw", md: "8vw", lg: "8vw", xl: "8vw"   }} mt={8}>
         <Box position="relative">
           <Hero />
           <CardNavbar viewChangeFromParent={currentView} onMobileViewChange={handleMobileViewChange} onActiveLinkChange={setActiveLink} />
         </Box>
       </Flex>
 
-      <Box mt={isMobileView ? '150px' : '40px'}>
+      <Box mt={isMobileView ? '90px' : '40px'}>
         <PropogateTemplates secondaryNavSelection={activeLink} />
       </Box>
     </Flex>

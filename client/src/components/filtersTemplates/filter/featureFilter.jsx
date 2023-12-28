@@ -154,7 +154,11 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection  }) => {
                             onKeyDown={handleKeyDown}
                             bg="white"
                             border="1px"
-                            borderColor="gray.300">
+                            pr="3.5rem"
+                            borderColor="gray.300"
+                            minW="9.5rem" 
+                            >
+                                
                             </Input>
                             <InputRightElement width="4.5rem" children={isLoading ? <Spinner size="md" /> : null}>
                             <Button 

@@ -103,7 +103,7 @@ const DefaultNav = () => (
 return (
   <Flex
     position="absolute"
-    bottom={isMobileView ? '-165px' : '-40px'}
+    bottom={isMobileView ? '-100px' : '-40px'}
     left={0}
     right={0}
     bg='whitesmoke'
